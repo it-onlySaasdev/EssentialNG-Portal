@@ -11,7 +11,7 @@ const Footer: FC = () => {
       <div className="container mx-auto lg:max-w-(--breakpoint-xl) md:max-w-(--breakpoint-md) px-4">
         <div className="grid grid-cols-1 sm:grid-cols-12 gap-8 pb-10 ">
           <div className="lg:col-span-3 md:col-span-4 col-span-6">
-            <Logo />
+            <Logo/>
             <div className="mt-6">
               <p className="text-sm font-light text-muted dark:text-white/60 mb-6">
                 You can relay on our amazing features list and also our customer
@@ -54,7 +54,7 @@ const Footer: FC = () => {
                     href="#"
                     className="text-sm text-midnight_text dark:text-white mb-0 hover:text-primary!"
                   >
-                    1 (888) 123 4567
+                    81 (650) 16 737
                   </Link>
                 </div>
               </div>
@@ -70,7 +70,7 @@ const Footer: FC = () => {
                     href="#"
                     className="text-sm text-midnight_text dark:text-white mb-0 hover:text-primary!"
                   >
-                    info@endeavor.com
+                    contact@essential.com
                   </Link>
                 </div>
               </div>
@@ -120,7 +120,8 @@ const Footer: FC = () => {
               href="https://nextjs-templates.com/"
               className="hover:text-primary!"
             >
-              Next.js Templates
+             
+            \\\\
             </Link>
             .
           </p>

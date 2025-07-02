@@ -9,7 +9,7 @@ import Newsletter from '@/components/Home/NewsLetter';
 import Testimonial from '@/components/Home/Testimonial';
 import Volunteer from '@/components/SharedComponent/Volunteer';
 export const metadata: Metadata = {
-  title: "Endeavor",
+  title: "EssentialNG",
 };
 
 export default function Home() {
