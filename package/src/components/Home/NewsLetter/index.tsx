@@ -29,7 +29,7 @@ const Newsletter = () => {
                             </div>
                             <div className="flex justify-center mb-6">
                                 <button type="submit" className="text-white  bg-linear-to-r from-error to-warning px-7 py-4 dark:hover:from-dark hover:from-white hover:to-white dark:hover:to-dark border border-transparent hover:border-error hover:text-error rounded-sm w-full">
-                                    Subscribe
+                                    {/* Subscribe */}
                                 </button>
                             </div>
                             <div className="flex items-center gap-2 mb-6">
@@ -41,10 +41,10 @@ const Newsletter = () => {
                     <div className="lg:mt-0 mt-8">
                         <div className="flex justify-between items-center border-b border-border dark:border-dark_border focus:border-primary dark:focus:border-primary dark:bg-dark pb-6 mb-8 focus-visible:outline-none-10">
                             <h4 className="text-base mb-0">
-                                Latest news at endeavor
+                                {/* Latest news at endeavor */}
                             </h4>
                             <Link href="/blog" className="text-error hover:text-warning text-base">
-                                View all
+                                {/* View all */}
                             </Link>
                         </div>
                         {posts.slice(0, 3).map((blog, i) => (

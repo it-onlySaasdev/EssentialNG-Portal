@@ -7,8 +7,8 @@ export const ColorConfiguration = () => {
                     For any change in colors : /src/utils/extendedConfig.ts</p>
                 <div className="py-4 px-5 rounded-md bg-black mt-8">
                     <p className="text-sm text-gray-400 flex flex-col gap-2">
-                        <span>--color-primary: #2cdd9b;</span>
-                        <span>--color-darkprimary: #28cf91;</span>
+                        <span>--color-primary:rgb(94, 44, 221);</span>
+                        <span>--color-darkprimary:rgb(82, 40, 207);</span>
                         <span>--color-secondary: #1dc8cd;</span>
                         <span>--color-midnight_text: #263238;</span>
                         <span>--color-muted: #8d97b7;</span>
@@ -17,7 +17,7 @@ export const ColorConfiguration = () => {
                         <span>--color-light_grey: #e9ecef;</span>
                         <span>--color-grey: #f5f7fa;</span>
                         <span>--color-border: #e1e1e1;</span>
-                        <span>--color-success: #3cd278;</span>
+                        <span>--color-success:rgb(60, 60, 210);</span>
                         <span>--color-darkmode: #0a2219;</span>
                         <span>--color-darklight: #000f30;</span>
                         <span>--color-dark_border: #203535;</span>
@@ -30,8 +30,8 @@ export const ColorConfiguration = () => {
                     For change , go to : /src/utils/extendedConfig.ts</p>
                 <div className="py-4 px-5 rounded-md bg-black mt-8">
                     <p className="text-sm text-gray-400 flex flex-col gap-2">
-                        <span>--color-primary: #2cdd9b;</span>
-                        <span>--color-darkprimary: #28cf91;</span>
+                        <span>--color-primary:rgb(44, 62, 221);</span>
+                        <span>--color-darkprimary:rgb(40, 62, 207);</span>
                     </p>
                 </div>
             </div>

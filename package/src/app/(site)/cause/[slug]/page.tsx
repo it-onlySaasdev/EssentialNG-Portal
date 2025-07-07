@@ -83,22 +83,22 @@ const Cause = () => {
                                 </h4>
                                 <ul className="flex flex-col gap-4">
                                     <li>
-                                        <Link href="#" className="text-base text-muted dark:text-white/60 hover:text-primary">Chlidren</Link>
+                                        <Link href="#" className="text-base text-muted dark:text-white/60 hover:text-primary">lorem1</Link>
                                     </li>
                                     <li>
-                                        <Link href="#" className="text-base text-muted dark:text-white/60 hover:text-primary">Development</Link>
+                                        <Link href="#" className="text-base text-muted dark:text-white/60 hover:text-primary">lorem 2</Link>
                                     </li>
                                     <li>
-                                        <Link href="#" className="text-base text-muted dark:text-white/60 hover:text-primary">Education</Link>
+                                        <Link href="#" className="text-base text-muted dark:text-white/60 hover:text-primary">lorem 3</Link>
                                     </li>
                                     <li>
-                                        <Link href="#" className="text-base text-muted dark:text-white/60 hover:text-primary">Environment</Link>
+                                        <Link href="#" className="text-base text-muted dark:text-white/60 hover:text-primary">lorem 4</Link>
                                     </li>
                                     <li>
-                                        <Link href="#" className="text-base text-muted dark:text-white/60 hover:text-primary">Healthcare</Link>
+                                        <Link href="#" className="text-base text-muted dark:text-white/60 hover:text-primary">lorem 5</Link>
                                     </li>
                                     <li>
-                                        <Link href="#" className="text-base text-muted dark:text-white/60 hover:text-primary">Programs</Link>
+                                        <Link href="#" className="text-base text-muted dark:text-white/60 hover:text-primary">lorem 6</Link>
                                     </li>
                                 </ul>
                             </div>

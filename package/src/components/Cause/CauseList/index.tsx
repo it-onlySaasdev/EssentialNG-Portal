@@ -29,7 +29,7 @@ const CauseList = () => {
                                     <div className="flex gap-4 mt-4">
                                         <div className="pr-4 border-r-2 dark:border-dark_border">
                                             <h4 className=" text-muted dark:text-white/60 text-sm mb-1">
-                                                Raised
+                                                {/* Raised */}
                                             </h4>
                                             <h5 className="text-2xl ">
                                                 {item.raised}
@@ -37,7 +37,7 @@ const CauseList = () => {
                                         </div>
                                         <div className="">
                                             <h4 className=" text-muted dark:text-white/60 text-sm mb-1">
-                                                Goal
+                                                {/* Goal */}
                                             </h4>
                                             <h5 className="text-2xl ">
                                                 {item.goal}

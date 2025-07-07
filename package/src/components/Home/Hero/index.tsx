@@ -1,51 +1,81 @@
-"use client"
+"use client";
 
-import { getPathFunc } from "@/utils/testing";
-import Link from "next/link";
-import { useContext, useEffect, useState } from "react";
-import { Test } from "./Test";
-import { Icon } from "@iconify/react/dist/iconify.js";
-import { Donation } from "./Donation";
-import DonationFormContext from "@/app/context/donationContext";
+import Slider from "react-slick";
+
+const slides = [
+  {
+    image: "images/hero/sliders/banner-img1.jpg",
+    title: "Empowering Personal Consultancy",
+    subtitle: "Tailored advice to grow your goals.",
+  },
+  {
+    image: "/images/hero/sliders/banner-img2.jpg",
+    title: "Unlock Your Business Potential",
+    subtitle: "Strategy, support, and success—on your terms.",
+  },
+  {
+    image: "/images/hero/sliders/banner-img3.jpg",
+    title: "Partner with Industry Experts",
+    subtitle: "We bring insight. You make impact.",
+  },
+];
 
 const Hero = () => {
-  const donationInfo = useContext(DonationFormContext);
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 600,
+    autoplay: true,
+    autoplaySpeed: 10000,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+  };
+
   return (
-    <>
-    <section className="relative bg-cover text-white md:pt-40 md:pb-28 py-20 bg-no-repeat bg-[url('/images/hero/banner-bg.jpg')] lg:mt-40 sm:mt-44 mt-20" >
-      <div className="container mx-auto lg:max-w-(--breakpoint-xl) px-4 grid grid-cols-12">
-        <div className="bg-white rounded-md p-10 lg:col-span-5 md:col-span-7 sm:col-span-10 col-span-12 dark:bg-dark" data-aos="fade-right">
-          <div className="flex justify-between mb-6">
-            {/* <div className="px-4 py-2 bg-midnight_text rounded-sm">
-              <p className=" text-white text-sm font-semibold">
-                
-              </p>
-            </div> */}
-            <p className="text-muted dark:text-white/60 text-xs font-medium"></p>
-          </div>
-          <h3 className="text-midnight_text dark:text-white text-lg font-bold mb-6">
-            
-          </h3>
-          <p className="text-muted dark:text-white/60 text-base mb-5">
-         
+    <section
+      className="w-full relative overflow-hidden"
+      style={{
+        background: "linear-gradient(135deg,rgb(8, 8, 9) 0%, #003C71 100%)",
+      }}
+    >
+      <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-10 py-20 md:py-28 s">
+        {/* Left side: Text content */}
+        <div className="w-full md:w-1/2 text-white">
+          <h1 className="text-3xl md:text-5xl font-extrabold leading-tight mb-6 max-w-xl">
+            We craft digital experiences through websites and apps.
+          </h1>
+          <p className="text-lg md:text-xl mb-8 text-white/90 max-w-lg">
+            Tailored advice to grow your goals.
           </p>
-          <div className="grid grid-cols-2 border-t border-border dark:border-dark_border mb-5">
-            <div className="col-span-1 border-r border-border dark:border-dark_border px-5 py-4">
-              <p className="text-xs text-muted dark:text-white/60 mb-1 "></p>
-              <h4 className="text-2xl text-secondary"></h4>
-            </div>
-            <div className="col-span-1 px-5 py-4">
-              <p className="text-xs text-muted dark:text-white/60 mb-1"></p>
-              <h4 className="text-2xl text-midnight_text dark:text-white"></h4>
-            </div>
-          </div>
-      
+          {/* <a
+            href="#contact"
+            className="inline-block bg-white text-[#0A7ADA] font-semibold px-6 py-3 rounded-md shadow hover:bg-gray-100 transition"
+          >
+            Get in Touch now
+          </a> */}
+        </div>
+
+        {/* Right side: Slider */}
+        <div className="w-full md:w-1/2">
+          <Slider {...settings}>
+            {slides.map((slide, idx) => (
+              <div key={idx}>
+                <div
+                  className="h-64 md:h-80 lg:h-96 rounded-lg bg-cover bg-center shadow-lg"
+                  style={{ backgroundImage: `url(${slide.image})` }}
+                >
+                  <div className="h-full w-full flex flex-col justify-end bg-black/30 p-4 rounded-lg">
+                    <h3 className="text-xl font-semibold text-white">{slide.title}</h3>
+                    <p className="text-sm text-white/80">{slide.subtitle}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </Slider>
         </div>
       </div>
     </section>
-
-    </>
-    
   );
 };
 

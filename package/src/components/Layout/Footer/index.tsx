@@ -14,12 +14,7 @@ const Footer: FC = () => {
             <Logo/>
             <div className="mt-6">
               <p className="text-sm font-light text-muted dark:text-white/60 mb-6">
-                You can relay on our amazing features list and also our customer
-                services will be great experience.
-              </p>
-              <p className="text-sm font-light text-muted dark:text-white/60 mb-0">
-                our amazing features list and also our customer services is
-                great.
+               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima velit dicta magnam atque recusandae voluptatem, consequuntur eius ad optio ullam. Dolore minus culpa dolorum ea deleniti excepturi quo. Rem, quos.
               </p>
             </div>
           </div>
@@ -34,11 +29,10 @@ const Footer: FC = () => {
                 />
                 <div className="">
                   <h5 className="text-sm text-midnight_text dark:text-white mb-4">
-                    Endeavor Head Office
+                    Essential Head Office
                   </h5>
                   <p className="text-sm text-muted dark:text-white/60">
-                    134, Cornish Building, Some Near by area, New York, USA -
-                    34556
+                    24 Iyalla Street, Behinde Shprite, Ikeja, Lagos State.
                   </p>
                 </div>
               </div>
@@ -78,7 +72,7 @@ const Footer: FC = () => {
           </div>
           <div className="lg:col-span-3 md:col-span-4 col-span-6">
             <h4 className="text-base text-midnight_text dark:text-white mb-4">
-              Causes
+              Our Services
             </h4>
             <ul className="pl-5">
               {footerLinks.slice(0, 5).map((item, index) => (
@@ -121,7 +115,7 @@ const Footer: FC = () => {
               className="hover:text-primary!"
             >
              
-            \\\\
+            
             </Link>
             .
           </p>

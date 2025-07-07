@@ -14,7 +14,7 @@ const FormPart = () => {
             <div className="bg-grey dark:bg-darkmode px-8 py-14 rounded-sm border border-border dark:border-dark_border mb-8 ">
                 <div className="border border-border dark:border-dark_border py-5 px-10 rounded-md mb-11">
                     <p className="text-sm text-muted dark:text-white/60">
-                        The maximum custom donation amount for this form is $999,999.99
+                       Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam optio quae, quasi distinctio, temporibus labore veniam, voluptatibus nemo sit repudiandae cumque ipsa error modi. Voluptas repellat distinctio vitae harum voluptate.
                     </p>
                 </div>
                 <form className="">
@@ -25,11 +25,11 @@ const FormPart = () => {
                         <input type="number" name="amount" id="amount2" placeholder="999,999.99" className="px-4 py-5 border rounded-e-lg dark:focus:border-primary focus:border-primary dark:bg-darkmode focus-visible:outline-hidden dark:border-dark_border text-base" />
                     </div>
                     <p className="text-base text-muted dark:text-white/60">
-                        Custom amount
+                       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae aliquid praesentium minima, dolore quo vel culpa optio. Iste asperiores, corrupti numquam consectetur atque optio iusto hic aliquam nisi repellendus explicabo?
                     </p>
                     <div className="mb-7">
                         <h5 className="text-base font-medium mb-4 pb-3 border-b border-border dark:border-dark_border">
-                            Select payment method
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates hic dolorem non exercitationem, harum rerum quae. Eum voluptas sint sequi soluta fugit alias voluptatibus, ullam eaque! Quo magnam eius consequatur?
                         </h5>
                         <div className="flex gap-4">
                             <div className="flex gap-2">
