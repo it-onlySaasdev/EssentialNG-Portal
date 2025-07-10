@@ -243,7 +243,7 @@ const Header: React.FC = () => {
       </div>
 
       {/* Lower header */}
-      <div className="bg-white/30 backdrop-blur-md dark:bg-dark/40 shadow-sm sticky top-0 z-50">
+      <div className="bg-white backdrop-blur-md dark:bg-dark/40 shadow-sm sticky top-0 z-50">
         <div className="px-4 container mx-auto max-w-screen-xl sm:flex lg:justify-between justify-center py-5 hidden">
           {/* Logo Section */}
           <div className="lg:block hidden">

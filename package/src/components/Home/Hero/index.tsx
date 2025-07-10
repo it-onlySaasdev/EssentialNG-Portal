@@ -43,7 +43,7 @@ const Hero = () => {
 <div
   className="
     w-full 
-    lg:py-32 
+    lg:py-40 
     container 
     mx-auto 
     flex 
@@ -54,13 +54,11 @@ const Hero = () => {
     gap-10
     rounded-xl
     bg-white/20
-    backdrop-blur-lg
     border
     border-white/30
     px-6
     py-10
-  "
->
+  ">
         {/* Left side: Text content */}
         <div className="w-full md:w-1/2 text-white">
           <h1 className="text-3xl md:text-5xl font-extrabold leading-tight mb-6 max-w-xl">

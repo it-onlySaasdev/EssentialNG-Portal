@@ -55,7 +55,7 @@
   --color-darkmode: #0a2219;
   --color-darklight: #000f30;
   --color-dark_border: #203535;
-  --color-dark: #00180f;
+  --color-dark: #00000;
 }
 
 /*
@@ -1391,16 +1391,16 @@ div.text-2xl {
     background-color: transparent;
   }
   .bg-white {
-    background-color: var(--color-white);
+    /* background-color: var(--color-white); */
   }
   .bg-white\/30 {
-    background-color: color-mix(in srgb, #fff 30%, transparent);
+    /* background-color: color-mix(in srgb, #fff 30%, transparent); */
     @supports (color: color-mix(in lab, red, red)) {
       background-color: color-mix(in oklab, var(--color-white) 30%, transparent);
     }
   }
   .bg-white\/70 {
-    background-color: color-mix(in srgb, #fff 70%, transparent);
+    /* background-color: color-mix(in srgb, #fff 70%, transparent); */
     @supports (color: color-mix(in lab, red, red)) {
       background-color: color-mix(in oklab, var(--color-white) 70%, transparent);
     }
@@ -3044,7 +3044,8 @@ div.text-2xl {
     &:is(.dark *) {
       background-color: color-mix(in srgb, #00180f 40%, transparent);
       @supports (color: color-mix(in lab, red, red)) {
-        background-color: color-mix(in oklab, var(--color-dark) 40%, transparent);
+        /* background-color: color-mix(in oklab, var(--color-dark) 40%, transparent); */
+        background-color: var(--color-dark);
       }
     }
   }
