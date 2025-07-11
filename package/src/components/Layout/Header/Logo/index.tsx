@@ -7,7 +7,7 @@ const Logo: React.FC = () => {
     <Link href="/">
       <Image
         src="/"
-        alt="logo"
+        alt="ESSENTIALNG"
         width={160}
         height={50}
         style={{ width: 'auto', height: 'auto' }}
@@ -16,13 +16,14 @@ const Logo: React.FC = () => {
       />
       <Image
         src="/"
-        alt="logo"
+        alt="ESSENTIALNG"
         width={160}
         height={50}
         style={{ width: 'auto', height: 'auto' }}
         quality={100}
         className='dark:block hidden'
       />
+
     </Link>
   );
 };

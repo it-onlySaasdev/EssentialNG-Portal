@@ -1,8 +1,8 @@
 import React from 'react'
 import { Metadata } from "next";
 import Hero from '@/components/Home/Hero';
-import Help from '@/components/Home/Help';
-import Causes from '@/components/Home/Causes';
+import CoreServices from "@/components/Home/CoreServices";
+import Process from "@/components/process";
 import FutureEvents from '@/components/Home/FutureEvents';
 import UrgentDonation from '@/components/Home/UrgentDonation';
 import Newsletter from '@/components/Home/NewsLetter';
@@ -16,8 +16,8 @@ export default function Home() {
   return (
     <main>
       <Hero />
-      <Help />
-      <Causes />
+      <CoreServices />
+      <Process />
       <FutureEvents />
       <UrgentDonation />
       <Newsletter />
