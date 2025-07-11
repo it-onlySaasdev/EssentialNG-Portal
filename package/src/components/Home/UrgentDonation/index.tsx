@@ -11,13 +11,13 @@ const UrgentDonation = () => {
             <div className="container mx-auto lg:max-w-(--breakpoint-xl) px-4">
                 <div className="bg-white dark:bg-dark max-w-29 w-full px-10 py-14 rounded-lg text-center mx-auto" data-aos="fade-right">
                     <h3 className="sm:text-2xl text-lg font-bold mb-5">
-                        Child needs to go immediate medical surgery, Help.
+                      Do You Have A Next Level-Idea?
                     </h3>
                     <p className="text-muted dark:text-white/60 sm:text-base text-sm mb-7">
-                    A child needs immediate surgery. Your help can save a life please contribute to their urgent medical care.
+                    Reach out and we can create magic together.
                     </p>
                     <button onClick={() => donationInfo?.setIsDonationOpen(true)} className="bg-linear-to-r from-primary to-secondary px-7 border text-sm font-semibold text-white border-transparent py-4 rounded-sm hover:from-transparent hover:to-transparent  hover:border-primary hover:text-primary">
-                        Urgent donate
+                      Work with Us
                     </button>
                 </div>
             </div>

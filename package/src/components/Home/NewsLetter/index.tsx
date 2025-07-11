@@ -14,7 +14,7 @@ const Newsletter = () => {
                                 Newsletter
                             </p>
                             <h2 className="text-3xl font-medium mb-6">
-                                Stay informed about new and upcoming causes
+                                Stay informed about new and upcoming Trends
                             </h2>
                             <p className="text-base text-muted dark:text-white/60">
                             Subscribe to our updates and stay connected with the latest causes and initiatives. Be among the first to learn how you can make a difference in urgent and upcoming projects!

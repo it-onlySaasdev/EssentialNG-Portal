@@ -7,10 +7,10 @@ const Help = () => {
             <div className="container mx-auto lg:max-w-(--breakpoint-xl) px-4">
                 <div className="text-center">
                     <h2 className="text-3xl mb-3 font-medium" data-aos-delay={'100'} data-aos="fade-right">
-                        {/* How can you help us? */}
+                        How can you help us?
                     </h2>
                     <p className="text-muted dark:text-white/60 text-base">
-                    {/* You can support us by donating, volunteering your time, or providing food supplies.<br className="lg:block hidden" /> Every effort makes a difference! */}
+                    You can support us by reaching out, volunteering your time, or providing ...<br className="lg:block hidden" /> Every effort makes a difference!
                     </p>
                     <div className="mt-20 grid grid-cols-12 gap-8">
                         {helpdata.map((item, index) => (

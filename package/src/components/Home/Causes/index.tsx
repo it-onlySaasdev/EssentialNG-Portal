@@ -35,10 +35,10 @@ const Causes = () => {
         <section className="lg:py-28 py-16 bg-grey dark:bg-darkmode">
             <div className="container mx-auto lg:max-w-(--breakpoint-xl) px-4">
                 <h2 className="text-center text-3xl font-medium mb-3" data-aos="fade-left">
-                    {/* Causes where need your help */}
+                    Causes where need your help
                 </h2>
                 <p className="text-base text-muted dark:text-white/60 text-center">
-                {/* Support essential causes like healthcare, education, hunger relief, and empowering <br className="lg:block hidden" />  vulnerable communities. Together, we can create lasting change! */}
+                Support essential causes like healthcare, education, hunger relief, and empowering <br className="lg:block hidden" />  vulnerable communities. Together, we can create lasting change!
                 </p>
                 <div className="mt-20">
                     <Slider {...settings}>

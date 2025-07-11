@@ -9,9 +9,9 @@ const FutureEvents = () => {
     <section className="lg:py-28 py-16 dark:bg-dark">
       <div className="container mx-auto lg:max-w-(--breakpoint-xl) px-4">
         <div className="text-center">
-          {/* <h2 className="text-3xl font-medium mb-3" data-aos="fade-left" >Upcoming Events Near You</h2> */}
+          <h2 className="text-3xl font-medium mb-3" data-aos="fade-left" >Upcoming Threands</h2>
           <p className="text-base text-muted dark:text-white/60 mx-auto lg:max-w-60%">
-          {/* Join us at local events to make a difference! Connect, volunteer, and support our mission in your community. */}
+          Join us at our team! Connect and support our mission in your community.
           </p>
         </div>
         <div className="mt-20 grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-8">

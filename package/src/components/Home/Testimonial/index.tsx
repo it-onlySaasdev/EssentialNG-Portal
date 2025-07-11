@@ -27,7 +27,7 @@ const Testimonial = () => {
         <section className="lg:py-28 py-16 bg-grey dark:bg-darkmode">
             <div className="container mx-auto lg:max-w-(--breakpoint-xl) px-4">
                 <h2 className="text-3xl font-medium mb-3 text-center" data-aos="fade-left">
-                    Check what our donators are saying
+                  Check what our supporters say
                 </h2>
                 <p className="text-base text-center text-muted dark:text-white/60 lg:max-w-60% mx-auto">
                 Discover heartfelt stories from our supporters who are helping us make a difference. See how their contributions are changing lives and inspiring hope!

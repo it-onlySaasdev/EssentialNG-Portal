@@ -17,7 +17,7 @@ const Volunteer = () => {
                     </p>
                     <div className="flex justify-center ">
                         <button onClick={() => donationInfo?.setIsDonationOpen(true)} className="text-white rounded-md bg-linear-to-r text-sm font-semibold from-error to-warning px-7 py-4 hover:from-transparent hover:to-transparent border border-transparent hover:border-error hover:text-error">
-                            Donate now
+                            Get in touch now
                         </button>
                     </div>
                 </div>

@@ -22,7 +22,7 @@ const BlogCard = ({ blog }: { blog: Blog }) => {
                         {title}
                     </h4>
                     <p className="text-muted dark:text-white/60 text-base">
-                        by Mark Freeman / 23 May 2024
+                        by Idowu Tobi/ 11 july 2025
                     </p>
                 </div>
             </Link>
