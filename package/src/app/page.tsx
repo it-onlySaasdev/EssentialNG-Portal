@@ -1,13 +1,15 @@
-import React from 'react'
+import React from "react";
 import { Metadata } from "next";
-import Hero from '@/components/Home/Hero';
+import Hero from "@/components/Home/Hero";
 import CoreServices from "@/components/Home/CoreServices";
 import Process from "@/components/process";
-import FutureEvents from '@/components/Home/FutureEvents';
-import UrgentDonation from '@/components/Home/UrgentDonation';
-import Newsletter from '@/components/Home/NewsLetter';
-import Testimonial from '@/components/Home/Testimonial';
-import Volunteer from '@/components/SharedComponent/Volunteer';
+import TeamTestimonialsSection from "@/components/Home/TeamTestimonials";
+import FutureEvents from "@/components/Home/FutureEvents";
+import UrgentDonation from "@/components/Home/UrgentDonation";
+import Newsletter from "@/components/Home/NewsLetter";
+import Testimonial from "@/components/Home/Testimonial";
+import Volunteer from "@/components/SharedComponent/Volunteer";
+
 export const metadata: Metadata = {
   title: "EssentialNG",
 };
@@ -18,11 +20,12 @@ export default function Home() {
       <Hero />
       <CoreServices />
       <Process />
+      <TeamTestimonialsSection />
       <FutureEvents />
       <UrgentDonation />
       <Newsletter />
       <Testimonial />
       <Volunteer />
     </main>
-  )
+  );
 }
