@@ -4,10 +4,10 @@ import HeroSub from "@/components/SharedComponent/HeroSub";
 import Volunteer from "@/components/SharedComponent/Volunteer";
 import { Metadata } from "next";
 export const metadata: Metadata = {
-  title: "Blog | Endeavor",
+  title: "Blog | Essential",
 };
 
-const BlogPage = () => {
+const blog = () => {
     return (
         <>
             <HeroSub
@@ -15,8 +15,9 @@ const BlogPage = () => {
             />
             <BlogList />
             <Volunteer />
+            
         </>
     );
 };
 
-export default BlogPage;
+export default blog;

@@ -4,8 +4,6 @@ import Hero from "@/components/Home/Hero";
 import CoreServices from "@/components/Home/CoreServices";
 import Process from "@/components/process";
 import TeamTestimonialsSection from "@/components/Home/TeamTestimonials";
-import FutureEvents from "@/components/Home/FutureEvents";
-import UrgentDonation from "@/components/Home/UrgentDonation";
 import Newsletter from "@/components/Home/NewsLetter";
 import Testimonial from "@/components/Home/Testimonial";
 import Volunteer from "@/components/SharedComponent/Volunteer";
@@ -21,8 +19,6 @@ export default function Home() {
       <CoreServices />
       <Process />
       <TeamTestimonialsSection />
-      <FutureEvents />
-      <UrgentDonation />
       <Newsletter />
       <Testimonial />
       <Volunteer />

@@ -4,28 +4,19 @@ export const headerData: HeaderItem[] = [
   { label: "Home", href: "/" },
   {
     label: "Services",
-    href: "#",
-    // submenu: [
-    //   { label: "Cause list", href: "/cause" },
-    //   { label: "Cause details", href: "/cause/cause-1" },
-    // ],
+    href: "/services",
+
   },
   {
     label: "Our Products",
-    href: "#",
-    // submenu: [
-    //   { label: "Events list", href: "/events" },
-    //   { label: "Events details", href: "/events/event-1" },
-    // ],
+    href: "/ourproduct",
+
   },
   {
     label: "Blog",
-    href: "#",
-    // submenu: [
-    //   { label: "Blog list", href: "/blog" },
-    //   { label: "Blog details", href: "/blog/blog_1" },
-    // ],
+    href: "/blog",
+    
   },
-  { label: "Contact us", href: "/contact" },
+  { label: "contact us", href: "/contact" },
   { label: "Documentation", href: "/documentation#version" },
 ];

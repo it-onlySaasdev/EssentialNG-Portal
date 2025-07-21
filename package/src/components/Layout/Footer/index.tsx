@@ -14,7 +14,7 @@ const Footer: FC = () => {
             <Logo/>
             <div className="mt-6">
               <p className="text-sm font-light text-muted dark:text-white/60 mb-6">
-               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima velit dicta magnam atque recusandae voluptatem, consequuntur eius ad optio ullam. Dolore minus culpa dolorum ea deleniti excepturi quo. Rem, quos.
+             Your customers are your most important source of feedback. Essential Direct allows you to monitor and respond to reviews across platforms quickly from one place..
               </p>
             </div>
           </div>
