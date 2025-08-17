@@ -19,7 +19,7 @@ const Logo: React.FC = () => {
         alt="ESSENTIALNG"
         width={160}
         height={50}
-        style={{ width: 'auto', height: 'auto' }}
+        style={{ width: 'auto', height: 'auto', color:'none'}}
         quality={100}
         className='dark:block hidden'
       />

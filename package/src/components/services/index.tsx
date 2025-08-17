@@ -65,7 +65,6 @@ const services: Service[] = [
 ];
 
 export default function ServicesShowcase() {
-//   useEffect(() => AOS.init({ once: true, duration: 700 }), []);
 
   return (
     <section

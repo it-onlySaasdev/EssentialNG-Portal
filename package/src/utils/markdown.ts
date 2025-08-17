@@ -1,61 +1,62 @@
-import fs from "fs";
-import matter from "gray-matter";
-import { join } from "path";
+import fs from 'fs';
+import path from 'path';
+import matter from 'gray-matter';
 
-const postsDirectory = join(process.cwd(), "markdown/blog");
+const postsDirectory = path.join(process.cwd(), 'markdown', 'blog');
 
-export function getPostSlugs() {
-  return fs.readdirSync(postsDirectory);
-}
-
-export function getPostBySlug(slug: string, fields: string[] = []) {  
-  const realSlug = slug.replace(/\.mdx$/, "");
-  const fullPath = join(postsDirectory, `${realSlug}.mdx`);
-  const fileContents = fs.readFileSync(fullPath, "utf8");
-  const { data, content } = matter(fileContents);
-
-  type Items = {
-    // [key: string]: string;
-    [key: string]: string | object;
-  };
-
-  const items: any = {};
-
-  function processImages(content: string) {
-    // You can modify this function to handle image processing
-    // For example, replace image paths with actual HTML image tags
-    return content.replace(/!\[.*?\]\((.*?)\)/g, '<img src="$1" alt="" />');
+// Get all slugs (filenames) of posts safely
+export function getPostSlugs(): string[] {
+  if (!fs.existsSync(postsDirectory)) {
+    console.warn(`[Warning] Directory not found: ${postsDirectory}`);
+    return [];
   }
 
-  // Ensure only the minimal needed data is exposed
-  fields.forEach((field) => {
-    if (field === "slug") {
-      items[field] = realSlug;
+  try {
+    const files = fs.readdirSync(postsDirectory).filter(file => file.endsWith('.md'));
+    if (files.length === 0) {
+      console.warn(`[Info] No markdown files found in ${postsDirectory}`);
     }
-    if (field === "content") {
-      // You can modify the content here to include Images
-      items[field] = processImages(content);
-    }
-
-    if (field === "metadata") {
-      // Include metadata, including the image information
-      items[field] = { ...data, coverImage: data.coverImage || null };
-    }
-
-    if (typeof data[field] !== "undefined") {
-      items[field] = data[field];
-    }
-  });
-
-  return items;
+    return files;
+  } catch (err) {
+    console.error(`[Error] Failed to read directory: ${postsDirectory}`, err);
+    return [];  
+  }
 }
 
+// Get post by slug with safe fallback
+export function getPostBySlug(slug: string, fields: string[] = []) {
+  const realSlug = slug.replace(/\.md$/, '');
+  const fullPath = path.join(postsDirectory, `${realSlug}.md`);
+
+  try {
+    const fileContents = fs.readFileSync(fullPath, 'utf8');
+    const { data, content } = matter(fileContents);
+
+    const result: any = {};
+
+    fields.forEach((field) => {
+      if (field === 'slug') {
+        result[field] = realSlug;
+      }
+      if (field === 'content') {
+        result[field] = content;
+      }
+      if (data[field]) {
+        result[field] = data[field];
+      }
+    });
+
+    return result;
+  } catch (err) {
+    console.error(`[Error] Failed to read file: ${fullPath}`, err);
+    return null; // Safe fallback
+  }
+}
+
+// Get all posts data safely
 export function getAllPosts(fields: string[] = []) {
   const slugs = getPostSlugs();
-  const posts = slugs
+  return slugs
     .map((slug) => getPostBySlug(slug, fields))
-    // sort posts by date in descending order
-    .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
-
-  return posts;
+    .filter((post) => post !== null); // Remove nulls in case of read failures
 }

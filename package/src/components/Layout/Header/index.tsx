@@ -8,15 +8,10 @@ import Logo from "./Logo";
 import Image from "next/image";
 import HeaderLink from "../Header/Navigation/HeaderLink";
 import MobileHeaderLink from "../Header/Navigation/MobileHeaderLink";
-import Signin from "@/components/Auth/SignIn";
-import SignUp from "@/components/Auth/SignUp";
+import RegisterForm from "@/components/Auth/RegisterForm";
 import { useTheme } from "next-themes";
 import { Icon } from "@iconify/react/dist/iconify.js";
-import DonationFormContext from "@/app/context/donationContext";
-import { SuccessfullLogin } from "@/components/Auth/AuthDialog/SuccessfulLogin";
-import AuthDialogContext from "@/app/context/AuthDialogContext";
-import { FailedLogin } from "@/components/Auth/AuthDialog/FailedLogin";
-import { UserRegistered } from "@/components/Auth/AuthDialog/UserRegistered";
+
 
 const Header: React.FC = () => {
   const pathUrl = usePathname();
@@ -65,8 +60,7 @@ const Header: React.FC = () => {
     }
   }, [isSignInOpen, isSignUpOpen, navbarOpen]);
 
-  const donationInfo = useContext(DonationFormContext);
-  const authDialog = useContext(AuthDialogContext);
+
 
   return (
     <header
@@ -131,39 +125,17 @@ const Header: React.FC = () => {
                       className="text-2xl dark:text-white"
                     />
                   </button>
-                  <Signin signInOpen={(value: boolean) => setIsSignInOpen(value)} />
+                
                 </div>
               </div>
             )}
 
             <Link
-              href="#"
+              href="./register"
               className="bg-primary text-white px-4 py-2 rounded-lg text-nowrap hover:bg-darkprimary"
             >
               Get in Touch
             </Link>
-
-            {isSignUpOpen && (
-              <div
-                ref={signUpRef}
-                className="fixed top-0 left-0 w-full h-full bg-black/50 flex items-center justify-center z-50 m-0!"
-              >
-                <div className="relative mx-auto w-full max-w-md overflow-hidden rounded-lg bg-white px-8 py-14 text-center dark:bg-dark">
-                  <button
-                    onClick={() => setIsSignUpOpen(false)}
-                    className="hover:bg-gray-200 dark:hover:bg-gray-700 p-1 rounded-full absolute -top-5 -right-3 mr-8 mt-8"
-                    aria-label="Close Sign Up Modal"
-                  >
-                    <Icon
-                      icon="ic:round-close"
-                      className="text-2xl dark:text-white"
-                    />
-                  </button>
-                  <SignUp signUpOpen={(value: boolean) => setIsSignUpOpen(value)} />
-                </div>
-              </div>
-            )}
-
             <button
               onClick={() => setNavbarOpen(!navbarOpen)}
               className="block lg:hidden p-2 rounded-lg"
@@ -225,7 +197,7 @@ const Header: React.FC = () => {
                   setNavbarOpen(false);
                 }}
               >
-                Sign In
+                Login 
               </Link>
               <Link
                 href="#"
@@ -235,7 +207,7 @@ const Header: React.FC = () => {
                   setNavbarOpen(false);
                 }}
               >
-                Sign Up
+                Sign up for free
               </Link>
             </div>
           </nav>
@@ -296,7 +268,7 @@ const Header: React.FC = () => {
               </div>
             </div>
 
-            {/* ✅ New Search Bar */}
+         
             <div className="ml-8">
               <SearchBar />
             </div>
@@ -304,28 +276,7 @@ const Header: React.FC = () => {
         </div>
       </div>
 
-      {/* Success / Error Alerts */}
-      <div
-        className={`fixed top-6 end-1/2 translate-x-1/2 z-50 ${
-          authDialog?.isSuccessDialogOpen ? "block" : "hidden"
-        }`}
-      >
-        <SuccessfullLogin />
-      </div>
-      <div
-        className={`fixed top-6 end-1/2 translate-x-1/2 z-50 ${
-          authDialog?.isFailedDialogOpen ? "block" : "hidden"
-        }`}
-      >
-        <FailedLogin />
-      </div>
-      <div
-        className={`fixed top-6 end-1/2 translate-x-1/2 z-50 ${
-          authDialog?.isUserRegistered ? "block" : "hidden"
-        }`}
-      >
-        <UserRegistered />
-      </div>
+    
     </header>
   );
 };
