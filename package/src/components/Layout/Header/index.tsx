@@ -6,9 +6,9 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { headerData } from "../Header/Navigation/menuData";
 import Logo from "./Logo";
 import Image from "next/image";
+import SignUp from "@/app/(site)/(auth)/register/page";
 import HeaderLink from "../Header/Navigation/HeaderLink";
 import MobileHeaderLink from "../Header/Navigation/MobileHeaderLink";
-import RegisterForm from "@/components/Auth/RegisterForm";
 import { useTheme } from "next-themes";
 import { Icon } from "@iconify/react/dist/iconify.js";
 

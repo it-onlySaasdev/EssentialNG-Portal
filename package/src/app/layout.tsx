@@ -8,40 +8,39 @@ import Aoscompo from "@/utils/aos";
 import { DonationProvider } from "./context/donationContext";
 import SessionProviderComp from "@/components/nextauth/SessionProvider";
 import { AuthDialogProvider } from "./context/AuthDialogContext";
-const montserrat = Montserrat({ subsets: ["latin"] });
 import NextTopLoader from 'nextjs-toploader';
+
+const montserrat = Montserrat({ subsets: ["latin"] });
 
 export default function RootLayout({
   children,
   session,
 }: Readonly<{
   children: React.ReactNode;
-  session:any
+  session: any;
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={montserrat.className}>
-      <NextTopLoader color="#FF4D7E" />
-      <DonationProvider>
-        <AuthDialogProvider>
-      <SessionProviderComp session={session}>
+        <NextTopLoader color="#FF4D7E" />
         <ThemeProvider
           attribute="class"
           enableSystem={true}
           defaultTheme="system"
         >
-          <Aoscompo>
-            <Header />
-            
-            {children}
-            
-            <Footer />
-          </Aoscompo>
-          <ScrollToTop />
+          <DonationProvider>
+            <AuthDialogProvider>
+              <SessionProviderComp session={session}>
+                <Aoscompo>
+                  <Header />
+                  {children}
+                  <Footer />
+                </Aoscompo>
+                <ScrollToTop />
+              </SessionProviderComp>
+            </AuthDialogProvider>
+          </DonationProvider>
         </ThemeProvider>
-        </SessionProviderComp>
-        </AuthDialogProvider>
-        </DonationProvider>
       </body>
     </html>
   );

@@ -1,89 +1,122 @@
 "use client";
-
 import { useState } from "react";
 
-interface Props {
-  onSwitch: (mode: "login" | "register" | "forgot") => void;
-}
-
-export default function LoginForm({ onSwitch }: Props) {
-  const [email, setEmail] = useState("");
+export default function LoginForm() {
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setError("");
-
-    if (!email || !password) {
-      setError("All fields are required");
-      return;
-    }
-
-    setLoading(true);
-
-    // Mock API call
-    setTimeout(() => {
-      setLoading(false);
-      if (email === "test@essentialng.com" && password === "123456") {
-        alert("✅ Login successful");
-      } else {
-        setError("Invalid email or password");
-      }
-    }, 1500);
+    console.log("Login submitted:", { username, password });
+    // later: call your API here
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      {error && <p className="text-red-500 text-sm">{error}</p>}
+    <section className="bg-white">
+      <div className="grid grid-cols-1 lg:grid-cols-2">
+        {/* Left Side */}
+        <div className="flex items-center justify-center px-4 py-7 bg-white sm:px-6 lg:px-8 sm:py-16 lg:py-24">
+          <div className="xl:w-full xl:max-w-sm 2xl:max-w-md xl:mx-auto">
+            <a href="#" className="text-3xl font-bold text-gray-900 mb-6 block first-letter:text-sky-500">
+              Essentialng
+            </a>
+            <h2 className="text-2xl font-bold leading-tight text-black">Welcome Back</h2>
+            <p className="mt-2 text-base text-gray-600">
+              Don&apos;t have an account ?{" "}
+              <a className="font-medium text-sky-600 transition-all duration-200 hover:text-sky-700 hover:underline"
+                 href="/auth/register">
+                Sign up
+              </a>
+            </p>
 
-      <div>
-        <label className="block text-sm font-medium mb-1">Business Email</label>
-        <input
-          type="email"
-          className="w-full border rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-blue-500"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="you@company.com"
-        />
+            <form onSubmit={handleSubmit} className="mt-8">
+              <div className="space-y-5">
+                {/* Username */}
+                <div>
+                  <label className="text-base font-medium text-gray-900"> Username </label>
+                  <div className="mt-2.5 relative text-gray-400 focus-within:text-gray-600">
+                    <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                      <i className="ti ti-user text-xl"></i>
+                    </div>
+                    <input
+                      type="text"
+                      value={username}
+                      onChange={(e) => setUsername(e.target.value)}
+                      placeholder="Enter email to get started"
+                      className="block w-full py-4 ps-10 pe-4 text-black placeholder-gray-500 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-sky-600 focus:bg-white"
+                    />
+                  </div>
+                </div>
+
+                {/* Password */}
+                <div>
+                  <div className="flex justify-between items-center">
+                    <label className="text-base font-medium text-gray-900"> Password </label>
+                    <a className="text-sm font-medium text-sky-500 underline" href="/auth/forgot-password">
+                      Forgot Password
+                    </a>
+                  </div>
+                  <div className="mt-2.5 relative text-gray-400 focus-within:text-gray-600">
+                    <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                      <i className="ti ti-fingerprint text-xl"></i>
+                    </div>
+                    <input
+                      type="password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      placeholder="Enter your password"
+                      className="block w-full py-4 ps-10 pe-4 text-black placeholder-gray-500 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-sky-600 focus:bg-white"
+                    />
+                  </div>
+                </div>
+
+                {/* Submit */}
+                <div>
+                  <button
+                    type="submit"
+                    className="inline-flex items-center justify-center w-full px-4 py-4 text-base font-semibold text-white rounded-md bg-gradient-to-r from-fuchsia-600 to-sky-600 hover:opacity-80"
+                  >
+                    Sign In
+                  </button>
+                </div>
+              </div>
+            </form>
+
+            {/* Google Login */}
+            <div className="mt-3 space-y-3">
+              <button
+                type="button"
+                className="relative inline-flex items-center justify-center w-full px-4 py-4 text-base font-semibold text-gray-700 bg-white border-2 border-gray-200 rounded-md hover:bg-gray-100"
+              >
+                <div className="absolute inset-y-0 start-0 p-4">
+                  <i className="ti ti-brand-google text-rose-500 text-2xl"></i>
+                </div>
+                Sign In with Google
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Right Side */}
+        <div className="relative flex items-end px-4 pb-10 pt-60 sm:pb-16 md:justify-center lg:pb-24 bg-cover bg-center sm:px-6 lg:h-screen lg:px-8 bg-[url('/images/bg.png')]">
+          <div className="absolute inset-0 bg-gradient-to-t from-sky-900 to-transparent"></div>
+          <div className="relative">
+            <div className="w-full max-w-xl xl:max-w-xl xl:pe-24">
+              <h3 className="text-4xl font-bold text-white">Connect with over 12k web pros &amp; craft your site.</h3>
+              <ul className="grid grid-cols-1 mt-10 sm:grid-cols-2 gap-x-8 gap-y-4">
+                {["Commercial License", "Unlimited Exports", "120+ Coded Blocks", "Design Files Included"].map(
+                  (item, i) => (
+                    <li key={i} className="flex items-center space-x-3">
+                      <i className="ti ti-circle-check-filled text-2xl text-sky-500"></i>
+                      <span className="text-lg font-medium text-white">{item}</span>
+                    </li>
+                  )
+                )}
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <div>
-        <label className="block text-sm font-medium mb-1">Password</label>
-        <input
-          type="password"
-          className="w-full border rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-blue-500"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="••••••••"
-        />
-      </div>
-
-      <button
-        type="submit"
-        disabled={loading}
-        className="w-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white py-2 rounded-lg font-semibold hover:opacity-90 transition"
-      >
-        {loading ? "Loading..." : "Login"}
-      </button>
-
-      <div className="flex justify-between text-sm mt-3">
-        <button
-          type="button"
-          className="text-blue-600"
-          onClick={() => onSwitch("forgot")}
-        >
-          Forgot password?
-        </button>
-        <button
-          type="button"
-          className="text-blue-600"
-          onClick={() => onSwitch("register")}
-        >
-          Create account
-        </button>
-      </div>
-    </form>
+    </section>
   );
 }
