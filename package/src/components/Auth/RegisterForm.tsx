@@ -1,3 +1,5 @@
+import { IconUser, IconAt, IconFingerprint } from "@tabler/icons-react";
+
 export default function RegisterPage() {
   return (
     <section className="bg-white dark:bg-gray-900 transition-colors duration-300">
@@ -18,7 +20,7 @@ export default function RegisterPage() {
               Already have an account?{" "}
               <a
                 className="font-medium text-sky-600 transition-all duration-200 hover:text-sky-700 dark:hover:text-sky-400 hover:underline"
-                href="/auth/login"
+                href="./login"
               >
                 Sign in
               </a>
@@ -33,7 +35,7 @@ export default function RegisterPage() {
                   </label>
                   <div className="mt-2.5 relative text-gray-400 focus-within:text-gray-600 dark:focus-within:text-gray-300">
                     <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                      <i className="ti ti-user text-xl"></i>
+                      <IconUser size={22} stroke={1.5} />
                     </div>
                     <input
                       type="text"
@@ -50,7 +52,7 @@ export default function RegisterPage() {
                   </label>
                   <div className="mt-2.5 relative text-gray-400 focus-within:text-gray-600 dark:focus-within:text-gray-300">
                     <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                      <i className="ti ti-at text-xl"></i>
+                      <IconAt size={22} stroke={1.5} />
                     </div>
                     <input
                       type="email"
@@ -67,7 +69,7 @@ export default function RegisterPage() {
                   </label>
                   <div className="mt-2.5 relative text-gray-400 focus-within:text-gray-600 dark:focus-within:text-gray-300">
                     <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                      <i className="ti ti-fingerprint text-xl"></i>
+                      <IconFingerprint size={22} stroke={1.5} />
                     </div>
                     <input
                       type="password"

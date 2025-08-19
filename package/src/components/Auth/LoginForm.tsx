@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-
+import { IconAt, IconFingerprint } from "@tabler/icons-react"; 
 export default function LoginForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -12,19 +12,19 @@ export default function LoginForm() {
   };
 
   return (
-    <section className="bg-white">
+    <section className="bg-white dark:bg-gray-900 transition-colors duration-30">
       <div className="grid grid-cols-1 lg:grid-cols-2">
         {/* Left Side */}
-        <div className="flex items-center justify-center px-4 py-7 bg-white sm:px-6 lg:px-8 sm:py-16 lg:py-24">
+        <div className="flex items-center justify-center px-4 py-7 dark:bg-gray-900 sm:px-6 lg:px-8 sm:py-16 lg:py-24">
           <div className="xl:w-full xl:max-w-sm 2xl:max-w-md xl:mx-auto">
-            <a href="#" className="text-3xl font-bold text-gray-900 mb-6 block first-letter:text-sky-500">
+            <a href="#" className="text-3xl font-bold text-gray-900 mb-6 block first-letter:text-sky-500 dark:text-white">
               Essentialng
             </a>
-            <h2 className="text-2xl font-bold leading-tight text-black">Welcome Back</h2>
+            <h2 className="text-2xl font-bold leading-tight text-black dark:text-white">Welcome Back</h2>
             <p className="mt-2 text-base text-gray-600">
               Don&apos;t have an account ?{" "}
               <a className="font-medium text-sky-600 transition-all duration-200 hover:text-sky-700 hover:underline"
-                 href="/auth/register">
+                 href="./register">
                 Sign up
               </a>
             </p>
@@ -33,10 +33,11 @@ export default function LoginForm() {
               <div className="space-y-5">
                 {/* Username */}
                 <div>
-                  <label className="text-base font-medium text-gray-900"> Username </label>
+                  <label className="text-base font-medium text-gray-900 dark:text-white"> Username </label>
                   <div className="mt-2.5 relative text-gray-400 focus-within:text-gray-600">
                     <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                      <i className="ti ti-user text-xl"></i>
+                      {/* <i className="ti ti-user text-xl"></i> */}
+                    <IconAt className="w-5 h-5 text-gray-500 mr-2" />
                     </div>
                     <input
                       type="text"
@@ -58,7 +59,8 @@ export default function LoginForm() {
                   </div>
                   <div className="mt-2.5 relative text-gray-400 focus-within:text-gray-600">
                     <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                      <i className="ti ti-fingerprint text-xl"></i>
+                      {/* <i className="ti ti-fingerprint text-xl"></i> */}
+        <IconFingerprint className="w-5 h-5 text-gray-500 mr-2" /> 
                     </div>
                     <input
                       type="password"
