@@ -44,7 +44,7 @@ export default function LoginForm() {
                       value={username}
                       onChange={(e) => setUsername(e.target.value)}
                       placeholder="Enter email to get started"
-                      className="block w-full py-4 ps-10 pe-4 text-black placeholder-gray-500 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-sky-600 focus:bg-white"
+                      className="block w-full py-4 ps-10 pe-4 text-black dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-all duration-200 border border-gray-200 dark:border-gray-700 rounded-md bg-gray-50 dark:bg-gray-800 focus:outline-none focus:border-sky-600 focus:bg-white dark:focus:bg-gray-900 caret-sky-600"
                     />
                   </div>
                 </div>
@@ -67,7 +67,7 @@ export default function LoginForm() {
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       placeholder="Enter your password"
-                      className="block w-full py-4 ps-10 pe-4 text-black placeholder-gray-500 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-sky-600 focus:bg-white"
+                      className="block w-full py-4 ps-10 pe-4 text-black dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-all duration-200 border border-gray-200 dark:border-gray-700 rounded-md bg-gray-50 dark:bg-gray-800 focus:outline-none focus:border-sky-600 focus:bg-white dark:focus:bg-gray-900 caret-sky-600"
                     />
                   </div>
                 </div>
