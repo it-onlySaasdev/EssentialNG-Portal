@@ -1,15 +1,54 @@
 "use client";
 import { useState } from "react";
-import { IconAt, IconFingerprint } from "@tabler/icons-react"; 
+import { IconAt, IconFingerprint } from "@tabler/icons-react";
+import { validateEmail, validatePassword } from "@/utils/validation";
+import { login } from "@/api/auth"; // ✅ use the auth helper
+
 export default function LoginForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Login submitted:", { username, password });
-    // later: call your API here
+    setError(null);
+
+    // Frontend validations
+    const emailError = validateEmail(username);
+    if (emailError) {
+      setError(emailError);
+      return;
+    }
+
+    const passwordError = validatePassword(password);
+    if (passwordError) {
+      setError(passwordError);
+      return;
+    }
+
+    try {
+      setLoading(true);
+
+      // ✅ Use login helper
+      const res = await login({ email: username, password });
+      console.log("Login success:", res);
+
+      // Example: store token in localStorage if FastAPI returns it
+      if (res.access_token) {
+        localStorage.setItem("token", res.access_token);
+      }
+
+      // Redirect after success
+      window.location.href = "/dashboard";
+
+    } catch (err: any) {
+      setError(err.response?.data?.detail || "Login failed. Try again.");
+    } finally {
+      setLoading(false);
+    }
   };
+
 
   return (
     <section className="bg-white dark:bg-gray-900 transition-colors duration-30">
@@ -29,6 +68,9 @@ export default function LoginForm() {
               </a>
             </p>
 
+            {/* Error Message */}
+            {error && <p className="mt-3 text-sm text-red-500">{error}</p>}
+
             <form onSubmit={handleSubmit} className="mt-8">
               <div className="space-y-5">
                 {/* Username */}
@@ -36,8 +78,7 @@ export default function LoginForm() {
                   <label className="text-base font-medium text-gray-900 dark:text-white"> Username </label>
                   <div className="mt-2.5 relative text-gray-400 focus-within:text-gray-600">
                     <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                      {/* <i className="ti ti-user text-xl"></i> */}
-                    <IconAt className="w-5 h-5 text-gray-500 mr-2" />
+                      <IconAt className="w-5 h-5 text-gray-500 mr-2" />
                     </div>
                     <input
                       type="text"
@@ -59,8 +100,7 @@ export default function LoginForm() {
                   </div>
                   <div className="mt-2.5 relative text-gray-400 focus-within:text-gray-600">
                     <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                      {/* <i className="ti ti-fingerprint text-xl"></i> */}
-        <IconFingerprint className="w-5 h-5 text-gray-500 mr-2" /> 
+                      <IconFingerprint className="w-5 h-5 text-gray-500 mr-2" /> 
                     </div>
                     <input
                       type="password"
@@ -76,9 +116,10 @@ export default function LoginForm() {
                 <div>
                   <button
                     type="submit"
-                    className="inline-flex items-center justify-center w-full px-4 py-4 text-base font-semibold text-white rounded-md bg-gradient-to-r from-fuchsia-600 to-sky-600 hover:opacity-80"
+                    disabled={loading}
+                    className="inline-flex items-center justify-center w-full px-4 py-4 text-base font-semibold text-white rounded-md bg-gradient-to-r from-fuchsia-600 to-sky-600 hover:opacity-80 disabled:opacity-50"
                   >
-                    Sign In
+                    {loading ? "Signing in..." : "Sign In"}
                   </button>
                 </div>
               </div>
