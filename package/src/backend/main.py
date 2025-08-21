@@ -8,7 +8,7 @@ app = FastAPI()
 # CORS setup (allow Next.js frontend to talk to FastAPI)
 origins = [
     "http://localhost:3000",   # local Next.js dev
-    "http://127.0.0.1:3000",   # alternative local dev
+    "http://172.20.10.5:3000",   # alternative local dev
     # add your LAN IP if testing on phone, e.g. "http://172.20.10.5:3000"
 ]
 

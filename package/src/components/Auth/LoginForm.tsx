@@ -145,9 +145,9 @@ export default function LoginForm() {
           <div className="absolute inset-0 bg-gradient-to-t from-sky-900 to-transparent"></div>
           <div className="relative">
             <div className="w-full max-w-xl xl:max-w-xl xl:pe-24">
-              <h3 className="text-4xl font-bold text-white">Connect with over 12k web pros &amp; craft your site.</h3>
+              <h3 className="text-4xl font-bold text-white">Connect with us...</h3>
               <ul className="grid grid-cols-1 mt-10 sm:grid-cols-2 gap-x-8 gap-y-4">
-                {["Commercial License", "Unlimited Exports", "120+ Coded Blocks", "Design Files Included"].map(
+                {["Secure Authentication", "Business Email Only", "Fast & Reliable Access", "Design Included"].map(
                   (item, i) => (
                     <li key={i} className="flex items-center space-x-3">
                       <i className="ti ti-circle-check-filled text-2xl text-sky-500"></i>
