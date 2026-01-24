@@ -10,7 +10,7 @@
 
 </div>
 
-## 🏗️ System Architecture
+## EssentialNG - EssentialNG-Portal is a comprehensive platform connecting Nigerian businesses with verified IT consultants and service providers. It integrates five specialized services under one unified ecosystem with centralized authentication and payment processing.
 
 ```mermaid
 graph TB
