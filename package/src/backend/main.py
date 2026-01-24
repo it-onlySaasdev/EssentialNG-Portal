@@ -1,28 +1,49 @@
-# src/backend/main.py
-from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
-from auth import router as auth_router  # import routes from auth.py
+from fastapi import FastAPI, Depends, HTTPException
+from sqlalchemy.orm import Session
+from . import users, database
 
 app = FastAPI()
 
-# CORS setup (allow Next.js frontend to talk to FastAPI)
-origins = [
-    "http://localhost:3000",   # local Next.js dev
-    "http://172.20.10.5:3000",   # alternative local dev
-    # add your LAN IP if testing on phone, e.g. "http://172.20.10.5:3000"
-]
+# Create DB tables
+database.Base.metadata.create_all(bind=database.engine)
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
-    allow_methods=["*"],  # allow POST, GET, etc.
-    allow_headers=["*"],
-)
 
-# Register routes
-app.include_router(auth_router, prefix="/auth", tags=["auth"])
+@app.post("/register")
+def register_user(user: users.UserCreate, db: Session = Depends(users.get_db)):
+    db_user = users.get_user_by_email(db, email=user.email)
+    if db_user:
+        raise HTTPException(status_code=400, detail="Email already registered")
 
-@app.get("/")
-def root():
-    return {"message": "FastAPI backend running "}
+    new_user = users.create_user(db=db, user=user)
+    return {
+        "message": "Registration successful",
+        "user_id": new_user.id,
+        "username": new_user.username,
+        "email": new_user.email,
+    }
+
+
+@app.post("/login")
+def login(email: str, password: str, db: Session = Depends(users.get_db)):
+    db_user = users.get_user_by_email(db, email=email)
+    if not db_user:
+        raise HTTPException(status_code=400, detail="Invalid email or password")
+
+    if not users.verify_password(password, db_user.password):
+        raise HTTPException(status_code=400, detail="Invalid email or password")
+
+    return {
+        "message": "Login successful",
+        "user_id": db_user.id,
+        "username": db_user.username,
+        "email": db_user.email,
+    }
+
+
+@app.get("/users")
+def list_users(skip: int = 0, limit: int = 10, db: Session = Depends(users.get_db)):
+    users_list = users.get_users(db, skip=skip, limit=limit)
+    return [
+        {"user_id": u.id, "username": u.username, "email": u.email}
+        for u in users_list
+    ]

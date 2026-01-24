@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { IconAt, IconFingerprint } from "@tabler/icons-react";
 import { validateEmail, validatePassword } from "@/utils/validation";
-import { login } from "@/api/auth"; // ✅ use the auth helper
+import { login } from "@/api/auth"; // use the auth helper
 
 export default function LoginForm() {
   const [username, setUsername] = useState("");
@@ -30,7 +30,7 @@ export default function LoginForm() {
     try {
       setLoading(true);
 
-      // ✅ Use login helper
+      // Use login helper
       const res = await login({ email: username, password });
       console.log("Login success:", res);
 

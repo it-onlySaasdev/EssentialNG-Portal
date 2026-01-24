@@ -2,7 +2,8 @@
 import { useState } from "react";
 import { IconAt, IconFingerprint, IconUser } from "@tabler/icons-react";
 import { validateEmail, validatePassword } from "@/utils/validation";
-import { signup } from "@/api/auth"; // ✅ only signup is needed here
+import { signup } from "@/api/auth"; 
+// only signup is needed here
 
 export default function RegisterForm() {
   const [fullName, setFullName] = useState("");

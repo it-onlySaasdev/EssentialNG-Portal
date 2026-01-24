@@ -1,48 +1,29 @@
-# src/backend/auth.py
-from fastapi import APIRouter, HTTPException, Depends
-from pydantic import BaseModel, EmailStr
-from passlib.context import CryptContext
+from fastapi import APIRouter, Depends, HTTPException
+from sqlalchemy.orm import Session
+from . import models, database
+from passlib.hash import bcrypt
 
 router = APIRouter()
 
-# Fake DB (replace later with SQLAlchemy or real DB)
-fake_users_db = {}
+def get_db():
+    db = database.SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
 
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+@router.post("/register")
+def register(email: str, password: str, db: Session = Depends(get_db)):
+    hashed_pw = bcrypt.hash(password)
+    user = models.User(email=email, hashed_password=hashed_pw)
+    db.add(user)
+    db.commit()
+    db.refresh(user)
+    return {"id": user.id, "email": user.email}
 
-# ---- Pydantic Schemas ----
-class SignupRequest(BaseModel):
-    email: EmailStr
-    password: str
-
-class LoginRequest(BaseModel):
-    email: EmailStr
-    password: str
-
-class UserResponse(BaseModel):
-    email: EmailStr
-
-# ---- Signup ----
-@router.post("/signup", response_model=UserResponse)
-def signup(data: SignupRequest):
-    if data.email in fake_users_db:
-        raise HTTPException(status_code=400, detail="Email already registered")
-    
-    hashed_password = pwd_context.hash(data.password)
-    fake_users_db[data.email] = hashed_password
-    return {"email": data.email}
-
-# ---- Login ----
-@router.post("/login", response_model=UserResponse)
-def login(data: LoginRequest):
-    user_password = fake_users_db.get(data.email)
-    if not user_password or not pwd_context.verify(data.password, user_password):
-        raise HTTPException(status_code=401, detail="Invalid email or password")
-    
-    return {"email": data.email}
-
-# ---- Me (Current user) ----
-@router.get("/me", response_model=UserResponse)
-def get_current_user():
-    # placeholder, later replace with JWT/session logic
-    return {"email": "demo@business.com"}
+@router.post("/login")
+def login(email: str, password: str, db: Session = Depends(get_db)):
+    user = db.query(models.User).filter(models.User.email == email).first()
+    if not user or not bcrypt.verify(password, user.hashed_password):
+        raise HTTPException(status_code=400, detail="Invalid credentials")
+    return {"message": "Login success", "user": {"id": user.id, "email": user.email}}
