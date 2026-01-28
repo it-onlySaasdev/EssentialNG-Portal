@@ -58,4 +58,4 @@ graph TB
     style E fill:#4CAF50
     style F fill:#2196F3
     style G fill:#FF9800
-<img width="1893" height="894" alt="image" src="https://github.com/user-attachments/assets/687f3ae4-346f-48eb-af59-bfc155808b62" />
+
