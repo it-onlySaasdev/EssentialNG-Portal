@@ -2250,7 +2250,7 @@
     padding-block: calc(var(--spacing) * 4);
   }
   .py-5 {
-    padding-block: calc(var(--spacing) * 5);
+    padding-block: calc(var(--spacing) * 2);
   }
   .py-6 {
     padding-block: calc(var(--spacing) * 6);
@@ -5747,7 +5747,7 @@ div.text-2xl {
     padding-block: calc(var(--spacing) * 4);
   }
   .py-5 {
-    padding-block: calc(var(--spacing) * 5);
+    padding-block: calc(var(--spacing) * 2)!important;
   }
   .py-6 {
     padding-block: calc(var(--spacing) * 6);
