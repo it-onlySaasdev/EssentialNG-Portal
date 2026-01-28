@@ -56,3 +56,8 @@ graph TB
     style E fill:#4CAF50
     style F fill:#2196F3
     style G fill:#FF9800
+    ```
+
+```mermaid
+![Architecture Overview](./docs/images/hero-review.png)
+```
