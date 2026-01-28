@@ -1,8 +1,23 @@
 from fastapi import FastAPI, Depends, HTTPException
 from sqlalchemy.orm import Session
 from . import users, database
+# ADD THIS IMPORT:
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+# ADD CORS MIDDLEWARE:
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://172.20.10.5:3000",  # Your React frontend IP
+        "http://localhost:3000",     # Localhost
+        "http://127.0.0.1:3000",     # Localhost alternative
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],  # Allow all HTTP methods
+    allow_headers=["*"],  # Allow all headers
+)
 
 # Create DB tables
 database.Base.metadata.create_all(bind=database.engine)
@@ -47,3 +62,13 @@ def list_users(skip: int = 0, limit: int = 10, db: Session = Depends(users.get_d
         {"user_id": u.id, "username": u.username, "email": u.email}
         for u in users_list
     ]
+
+
+@app.get("/")
+def read_root():
+    return {"message": "EssentialNG-Portal API is running"}
+
+
+@app.get("/health")
+def health_check():
+    return {"status": "healthy"}

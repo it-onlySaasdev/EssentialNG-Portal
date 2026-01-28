@@ -242,7 +242,7 @@ const Header: React.FC = () => {
                   href="#"
                   className="text-base font-semibold hover:text-primary"
                 >
-                  contact@essential.com
+                  idowu.tobi.saas.dev@gmail.com
                 </Link>
               </div>
             </div>
