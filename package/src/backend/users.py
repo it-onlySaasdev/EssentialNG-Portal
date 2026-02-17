@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import Session
 from pydantic import BaseModel, EmailStr
-from .database import Base, SessionLocal
+from database import Base, SessionLocal  # ✅ FIXED: Removed the dot
 import bcrypt
 
 
@@ -32,7 +32,7 @@ class UserResponse(BaseModel):
     email: EmailStr
 
     class Config:
-        orm_mode = True
+        from_attributes = True  # ✅ V2 way
 
 
 # -----------------------------

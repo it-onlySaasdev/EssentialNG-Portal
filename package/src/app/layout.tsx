@@ -9,7 +9,8 @@ import { DonationProvider } from "./context/donationContext";
 import SessionProviderComp from "@/components/nextauth/SessionProvider";
 import { AuthDialogProvider } from "./context/AuthDialogContext";
 import NextTopLoader from 'nextjs-toploader';
-
+// Add this import
+import ConditionalLayout from "@/components/ConditionalLayout";
 const montserrat = Montserrat({ subsets: ["latin"] });
 
 export default function RootLayout({
@@ -21,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={montserrat.className}>
+      <body className={montserrat.className} suppressHydrationWarning>
         <NextTopLoader color="#4d9dffff" />
         <ThemeProvider
           attribute="class"
@@ -32,9 +33,10 @@ export default function RootLayout({
             <AuthDialogProvider>
               <SessionProviderComp session={session}>
                 <Aoscompo>
-                  <Header />
-                  {children}
-                  <Footer />
+                  {/* Replace direct Header/Footer with ConditionalLayout */}
+                  <ConditionalLayout>
+                    {children}
+                  </ConditionalLayout>
                 </Aoscompo>
                 <ScrollToTop />
               </SessionProviderComp>

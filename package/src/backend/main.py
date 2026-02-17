@@ -1,27 +1,26 @@
 from fastapi import FastAPI, Depends, HTTPException
-from sqlalchemy.orm import Session
-from . import users, database
-# ADD THIS IMPORT:
 from fastapi.middleware.cors import CORSMiddleware
+from sqlalchemy.orm import Session
+import users
+import database
+from pydantic import BaseModel
 
 app = FastAPI()
 
-# ADD CORS MIDDLEWARE:
+# FIXED CORS MIDDLEWARE - COMPLETE CONFIGURATION
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "http://172.20.10.5:3000",  # Your React frontend IP
-        "http://localhost:3000",     # Localhost
-        "http://127.0.0.1:3000",     # Localhost alternative
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+        "http://192.168.8.253:3000",
     ],
     allow_credentials=True,
-    allow_methods=["*"],  # Allow all HTTP methods
-    allow_headers=["*"],  # Allow all headers
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
-
 # Create DB tables
 database.Base.metadata.create_all(bind=database.engine)
-
 
 @app.post("/register")
 def register_user(user: users.UserCreate, db: Session = Depends(users.get_db)):
@@ -37,14 +36,18 @@ def register_user(user: users.UserCreate, db: Session = Depends(users.get_db)):
         "email": new_user.email,
     }
 
+# Add this Pydantic model for login request
+class LoginRequest(BaseModel):
+    email: str
+    password: str
 
 @app.post("/login")
-def login(email: str, password: str, db: Session = Depends(users.get_db)):
-    db_user = users.get_user_by_email(db, email=email)
+def login(request: LoginRequest, db: Session = Depends(users.get_db)):
+    db_user = users.get_user_by_email(db, email=request.email)
     if not db_user:
         raise HTTPException(status_code=400, detail="Invalid email or password")
 
-    if not users.verify_password(password, db_user.password):
+    if not users.verify_password(request.password, db_user.password):
         raise HTTPException(status_code=400, detail="Invalid email or password")
 
     return {
@@ -54,7 +57,6 @@ def login(email: str, password: str, db: Session = Depends(users.get_db)):
         "email": db_user.email,
     }
 
-
 @app.get("/users")
 def list_users(skip: int = 0, limit: int = 10, db: Session = Depends(users.get_db)):
     users_list = users.get_users(db, skip=skip, limit=limit)
@@ -63,11 +65,9 @@ def list_users(skip: int = 0, limit: int = 10, db: Session = Depends(users.get_d
         for u in users_list
     ]
 
-
 @app.get("/")
 def read_root():
     return {"message": "EssentialNG-Portal API is running"}
-
 
 @app.get("/health")
 def health_check():

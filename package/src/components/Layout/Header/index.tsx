@@ -70,8 +70,9 @@ const Header: React.FC = () => {
           : "shadow-none"
       }`}
     >
-      {/* Top navigation */}
+      {/*Secondary Top Navigation */}
       <div className="sm:bg-linear-to-r bg-linear-to-l md:from-primary md:to-secondary lg:py-0 py-2 bg-white dark:bg-dark">
+        {/* small Navigation Bar  */}
         <div className="container mx-auto lg:max-w-(--breakpoint-xl) md:max-w-(--breakpoint-md) flex items-center justify-between px-4">
           <div className="lg:hidden block">
             <Logo />
@@ -214,8 +215,9 @@ const Header: React.FC = () => {
         </div>
       </div>
 
-      {/* Lower header */}
+      {/* Initial large header  */}
       <div className="bg-white backdrop-blur-md dark:bg-dark/40 shadow-sm sticky top-0 z-50">
+      {/* large Navigation bar  */}
         <div className="px-4 container mx-auto max-w-screen-xl sm:flex lg:justify-between justify-center py-5 hidden">
           {/* Logo Section */}
           <div className="lg:block hidden">

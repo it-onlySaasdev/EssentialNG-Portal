@@ -2,7 +2,8 @@
 import { useState } from "react";
 import { IconAt, IconFingerprint } from "@tabler/icons-react";
 import { validateEmail, validatePassword } from "@/utils/validation";
-import { login } from "@/api/auth"; // use the auth helper
+import axios from "axios"; // Import axios directly
+import { login } from "@/api/auth";  // ✅ ADDED THIS IMPORT
 
 export default function LoginForm() {
   const [username, setUsername] = useState("");
@@ -30,25 +31,60 @@ export default function LoginForm() {
     try {
       setLoading(true);
 
-      // Use login helper
-      const res = await login({ email: username, password });
-      console.log("Login success:", res);
+      // Call backend directly with proper error handling
+      const response = await axios.post(
+          'http://localhost:8000/login',  // localhost
+        { 
+          email: username, 
+          password: password 
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
+      );
 
-      // Example: store token in localStorage if FastAPI returns it
-      if (res.access_token) {
-        localStorage.setItem("token", res.access_token);
+      console.log("Login success:", response.data);
+
+      // Store user data - FIXED VERSION
+      if (response.data) {
+        localStorage.setItem('user', JSON.stringify({
+          user_id: response.data.user_id,  // ✅ Matches backend response
+          username: response.data.username,
+          email: response.data.email
+        }));
       }
 
       // Redirect after success
       window.location.href = "/dashboard";
 
     } catch (err: any) {
-      setError(err.response?.data?.detail || "Login failed. Try again.");
+      console.error("Login error:", err);
+      
+      // Handle different error formats
+      if (err.response?.data?.detail) {
+        setError(err.response.data.detail);
+      } else if (err.response?.data?.message) {
+        setError(err.response.data.message);
+      } else if (err.message) {
+        setError(err.message);
+      } else if (typeof err === 'string') {
+        setError(err);
+      } else if (err && typeof err === 'object') {
+        // Avoid rendering object directly
+        try {
+          setError(JSON.stringify(err));
+        } catch {
+          setError("Login failed");
+        }
+      } else {
+        setError("Login failed. Please try again.");
+      }
     } finally {
       setLoading(false);
     }
   };
-
 
   return (
     <section className="bg-white dark:bg-gray-900 transition-colors duration-30">
@@ -68,24 +104,25 @@ export default function LoginForm() {
               </a>
             </p>
 
-            {/* Error Message */}
+            {/* Error Message - Only renders string */}
             {error && <p className="mt-3 text-sm text-red-500">{error}</p>}
 
             <form onSubmit={handleSubmit} className="mt-8">
               <div className="space-y-5">
-                {/* Username */}
+                {/* Email field */}
                 <div>
-                  <label className="text-base font-medium text-gray-900 dark:text-white"> Username </label>
+                  <label className="text-base font-medium text-gray-900 dark:text-white"> Email </label>
                   <div className="mt-2.5 relative text-gray-400 focus-within:text-gray-600">
                     <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                       <IconAt className="w-5 h-5 text-gray-500 mr-2" />
                     </div>
                     <input
-                      type="text"
+                      type="email" // Changed from text to email
                       value={username}
                       onChange={(e) => setUsername(e.target.value)}
-                      placeholder="Enter email to get started"
+                      placeholder="Enter your email"
                       className="block w-full py-4 ps-10 pe-4 text-black dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-all duration-200 border border-gray-200 dark:border-gray-700 rounded-md bg-gray-50 dark:bg-gray-800 focus:outline-none focus:border-sky-600 focus:bg-white dark:focus:bg-gray-900 caret-sky-600"
+                      required
                     />
                   </div>
                 </div>
@@ -93,7 +130,7 @@ export default function LoginForm() {
                 {/* Password */}
                 <div>
                   <div className="flex justify-between items-center">
-                    <label className="text-base font-medium text-gray-900"> Password </label>
+                    <label className="text-base font-medium text-gray-900 dark:text-white"> Password </label>
                     <a className="text-sm font-medium text-sky-500 underline" href="/auth/forgot-password">
                       Forgot Password
                     </a>
@@ -108,6 +145,7 @@ export default function LoginForm() {
                       onChange={(e) => setPassword(e.target.value)}
                       placeholder="Enter your password"
                       className="block w-full py-4 ps-10 pe-4 text-black dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-all duration-200 border border-gray-200 dark:border-gray-700 rounded-md bg-gray-50 dark:bg-gray-800 focus:outline-none focus:border-sky-600 focus:bg-white dark:focus:bg-gray-900 caret-sky-600"
+                      required
                     />
                   </div>
                 </div>
