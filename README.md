@@ -58,7 +58,6 @@ graph TB
     style G fill:#FF9800
 ````
 ![Architecture Overview](./docs/images/hero-review.png)
-<<<<<<< Updated upstream
 ![Architecture Overview](./docs/images/users_Dashboad.png)
 ![Architecture Overview](./docs/images/mobile_devices.png)
 
