@@ -87,3 +87,4 @@ graph TB
     style G fill:#FF9800
 ````
 ![Architecture Overview](./docs/images/hero-review.png)
+![Architecture Overview](./docs/images/hero-review.png)
