@@ -56,13 +56,3 @@ graph TB
     style E fill:#4CAF50
     style F fill:#2196F3
     style G fill:#FF9800
-````
-![Architecture Overview](./docs/images/hero-review.png)
-<<<<<<< Updated upstream
-![Architecture Overview](./docs/images/users_Dashboad.png)
-![Architecture Overview](./docs/images/mobile_devices.png)
-=======
-![Architecture Overview](./docs/images/mobile_devices.png)
-![Architecture Overview](./docs/images/users_Dashboad.png.png)
-![Architecture Overview](./docs/images/.png)
->>>>>>> Stashed changes
