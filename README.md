@@ -56,3 +56,7 @@ graph TB
     style E fill:#4CAF50
     style F fill:#2196F3
     style G fill:#FF9800
+````
+![Architecture Overview](./docs/images/hero-review.png)
+![dashboard Overview](./docs/images/users_Dashboad.png)
+![mobile Overview](./docs/images/mobile_devices.png)
