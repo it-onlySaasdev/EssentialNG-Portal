@@ -1,6 +1,13 @@
 <!-- Profile Views Counter -->
 <img src="https://komarev.com/ghpvc/?username=it-onlySaasdev&label=Profile%20Views&color=0e75b6&style=flat-square" alt="Profile Views" />
+<!-- PROFILE VIEWS - Works immediately -->
+[![Profile Views](https://visitcount.itsvg.in/api?id=it-onlySaasdev&label=Profile%20Views&color=0&icon=5&pretty=true)](https://visitcount.itsvg.in)
 
+<!-- TRAFFIC COUNTER - Requires GitHub Action setup -->
+[![GitHub Traffic](https://img.shields.io/badge/dynamic/json?color=success&label=Total%20Visitors&query=count&url=https%3A%2F%2Fraw.githubusercontent.com%2Fit-onlySaasdev%2FEssentialNG-Portal%2Fmain%2Fvisitor-counter.json&style=flat-square)](https://github.com/it-onlySaasdev/EssentialNG-Portal)
+
+<!-- ANALYTICS BUTTON - Simple link -->
+[![Analytics](https://img.shields.io/badge/Analytics-Dashboard-blue?style=flat-square)](https://analytics.itsvg.in/github/it-onlySaasdev)
 <div align="center">
 
 ![](https://img.shields.io/badge/React-18.2-61DAFB?style=for-the-badge&logo=react)
