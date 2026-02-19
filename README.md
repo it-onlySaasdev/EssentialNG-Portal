@@ -58,5 +58,5 @@ graph TB
     style G fill:#FF9800
 ````
 ![Architecture Overview](./docs/images/hero-review.png)
-![dashboard Overview](./docs/images/users_Dashboad.png)
+![dashboard Overview](./docs/images/users_Dashboard.png)
 ![mobile Overview](./docs/images/mobile_devices.png)
