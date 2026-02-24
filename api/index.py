@@ -5,7 +5,8 @@ from sqlalchemy.orm import Session
 import users
 import database
 from pydantic import BaseModel
-from datetime import datetime, timedelta  # ✅ ADD THIS IMPORT
+from datetime import datetime, timedelta
+from mangum import Mangum  # ✅ ADD THIS IMPORT
 
 app = FastAPI()
 
@@ -13,8 +14,9 @@ app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-   "http://localhost:3000",
-    "https://your-app.vercel.app",
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+        "http://192.168.8.254:3000",  # Your current IP
     ],
     allow_credentials=True,
     allow_methods=["*"],
@@ -154,3 +156,6 @@ def read_root():
 @app.get("/health")
 def health_check():
     return {"status": "healthy"}
+
+# ✅ ADD THIS AT THE VERY END - Vercel serverless handler
+handler = Mangum(app)
