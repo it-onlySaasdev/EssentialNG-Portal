@@ -47,17 +47,23 @@ export default function LoginForm() {
 
       console.log("Login success:", response.data);
 
-      // Store user data - FIXED VERSION
+      // ✅ FIXED: Store user data with admin status and redirect accordingly
       if (response.data) {
-        localStorage.setItem('user', JSON.stringify({
-          user_id: response.data.user_id,  // ✅ Matches backend response
+        const userData = {
+          user_id: response.data.user_id,
           username: response.data.username,
-          email: response.data.email
-        }));
+          email: response.data.email,
+          is_admin: response.data.is_admin || false  // ← ADDED
+        };
+        localStorage.setItem('user', JSON.stringify(userData));
+        
+        // ✅ Redirect based on admin status
+        if (userData.is_admin) {
+          window.location.href = "/admin";
+        } else {
+          window.location.href = "/dashboard";
+        }
       }
-
-      // Redirect after success
-      window.location.href = "/dashboard";
 
     } catch (err: any) {
       console.error("Login error:", err);

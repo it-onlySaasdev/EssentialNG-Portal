@@ -3,10 +3,10 @@ import axios from "axios";
 
 // Important: This must point to your FastAPI backend
 const api = axios.create({
-   baseURL: "http://localhost:8000",  // CHANGE THIS - use localhost NOT 192.168.8.254
-  // OR if running locally: "http://localhost:8000"
-  // OR if using different port: "http://localhost:8000"
-  timeout: 10000,
+  baseURL: process.env.NODE_ENV === 'production' 
+    ? '/api'  // In production, use relative path
+    : 'http://localhost:8000',  // In development
+  timeout: 30000,
   headers: {
     "Content-Type": "application/json",
   },

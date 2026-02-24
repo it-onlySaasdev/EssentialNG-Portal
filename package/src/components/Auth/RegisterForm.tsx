@@ -263,22 +263,6 @@ export default function RegisterForm() {
               Join EssentialNG Portal
             </h3>
             
-            {/* <ul className="space-y-4">
-              {[
-                { icon: "🔒", text: "Secure Authentication & Data Protection" },
-                { icon: "💼", text: "Business-focused Platform for Professionals" },
-                { icon: "⚡", text: "Fast & Reliable Access Across Devices" },
-                { icon: "🎨", text: "Modern UI/UX Design Included" },
-                { icon: "🌍", text: "Multi-service Platform for Nigerian Market" },
-                { icon: "📈", text: "Grow Your Business with Digital Solutions" }
-              ].map((item, index) => (
-                <li key={index} className="flex items-start space-x-3">
-                  <span className="text-2xl mt-1">{item.icon}</span>
-                  <span className="text-lg font-medium text-white/90">{item.text}</span>
-                </li>
-              ))}
-            </ul> */}
-
             <div className="mt-10 p-6 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20">
               <h4 className="text-xl font-bold text-white mb-3">Why Join EssentialNG?</h4>
               <p className="text-white/80">

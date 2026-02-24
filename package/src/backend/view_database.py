@@ -69,5 +69,59 @@ def view_database():
     except Exception as e:
         print(f"❌ Error: {e}")
 
+# ✅ NEW: Admin promotion function (added at the end)
+def make_user_admin(email):
+    """Promote a user to admin by email"""
+    try:
+        conn = sqlite3.connect("essentialng.db")
+        cursor = conn.cursor()
+        
+        # Check if is_admin column exists
+        cursor.execute("PRAGMA table_info(users);")
+        columns = [col[1] for col in cursor.fetchall()]
+        
+        if 'is_admin' not in columns:
+            print("❌ 'is_admin' column not found in users table.")
+            print("   Please update your database first.")
+            return
+        
+        # Check if user exists
+        cursor.execute("SELECT id, username, email, is_admin FROM users WHERE email = ?", (email,))
+        user = cursor.fetchone()
+        
+        if not user:
+            print(f"❌ User with email '{email}' not found.")
+            print("   Make sure you've registered first.")
+            return
+        
+        # Check if already admin
+        if user[3] == 1:
+            print(f"✅ User {user[1]} ({email}) is already an admin!")
+            return
+        
+        # Make admin
+        cursor.execute("UPDATE users SET is_admin = 1 WHERE email = ?", (email,))
+        conn.commit()
+        
+        print(f"✅ SUCCESS! User {user[1]} ({email}) is now an admin!")
+        
+        # Show updated user
+        cursor.execute("SELECT id, username, email, is_admin FROM users WHERE email = ?", (email,))
+        updated = cursor.fetchone()
+        print(f"   ID: {updated[0]}, Username: {updated[1]}, Admin: {updated[3]}")
+        
+        conn.close()
+        
+    except Exception as e:
+        print(f"❌ Error: {e}")
+
 if __name__ == "__main__":
     view_database()
+    
+    # ✅ NEW: Add this to promote yourself to admin
+    print("\n" + "=" * 70)
+    print("👑 ADMIN PROMOTION")
+    print("=" * 70)
+    
+    admin_email = "idowu.tobi.saas.dev@gmail.com"
+    make_user_admin(admin_email)

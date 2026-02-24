@@ -1,0 +1,36 @@
+name: Update Visitor Counter
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Runs daily at midnight
+  workflow_dispatch:  # Allows manual triggering
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update-visitor-count:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Fetch traffic data from GitHub API
+        id: traffic
+        run: |
+          # Get total views from GitHub Traffic API
+          VIEWS=$(curl -s -H "Authorization: token ${{ secrets.TRAFFIC_TOKEN }}" \
+            "https://api.github.com/repos/${{ github.repository }}/traffic/views" | \
+            jq -r '.count')
+          
+          # Create or update JSON file
+          echo "{\"count\": $VIEWS}" > visitor-counter.json
+          
+      - name: Commit and push if changed
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add visitor-counter.json
+          git diff --quiet && git diff --staged --quiet || git commit -m "Update visitor counter"
+          git push
