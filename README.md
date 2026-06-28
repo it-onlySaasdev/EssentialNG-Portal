@@ -60,7 +60,3 @@ graph TB
     style F fill:#2196F3
     style G fill:#FF9800
 ````
-## IMPORTATIONS
-- ![Architecture Overview](https://raw.githubusercontent.com/it-onlySaasdev/it-onlySaasdev/main/images/hero-review.png)
-- ![Dashboard Overview](https://raw.githubusercontent.com/it-onlySaasdev/it-onlySaasdev/main/images/users_Dashboard.png)
-- ![Mobile Overview](https://raw.githubusercontent.com/it-onlySaasdev/it-onlySaasdev/main/images/mobile_devices.png)
